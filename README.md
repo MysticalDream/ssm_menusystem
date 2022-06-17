@@ -1,5 +1,4 @@
-# ssm_menusystem
-基于SSM的菜谱管理系统
+# 基于SSM的菜谱管理系统
 
 
 [![github仓库](https://img.shields.io/badge/GitHub-yellow.svg?style=social&logo=github)](https://github.com/MysticalDream/ssm_menusystem)
