@@ -5,9 +5,18 @@
 [![github仓库](https://img.shields.io/badge/GitHub-yellow.svg?style=social&logo=github)](https://github.com/MysticalDream/ssm_menusystem)
 ![语言](https://img.shields.io/badge/language-java-brightgreen.svg?style=flat)
 
-# 运行项目
-修改项目的配置文件`src/main/resources/application.yml`
+# 准备工作
 
+- 修改项目的数据库配置文件`src/main/resources/jdbc.properties`
+```properties
+#配置连接url,需要指定数据库xxxx
+jdbc.url=jdbc:mysql://localhost:3306/xxxx?characterEncoding=UTF-8&serverTimezone=GMT%2B8
+#用于连接数据库的用户名
+jdbc.username=xxxx
+#数据库密码
+jdbc.password=xxxx
+```
+- 修改项目的配置文件`src/main/resources/application.yml`
 ```xml
 #配置服务器和静态资源路径
 ssmServer:
@@ -22,4 +31,6 @@ log4j:
 
 ```
 
-# 
+# 运行项目
+配置完成后直接运行`src/main/java/com/mysticaldream/SSMApplication.java`文件
+
