@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <!--许JDBC 支持自动生成主键-->
+        <setting name="useGeneratedKeys" value="true"/>
+        <!--日志实现-->
+        <setting name="logImpl" value="SLF4J"/>
+        <!--全局性地开启或关闭所有映射器配置文件中已配置的任何缓存-->
+        <setting name="cacheEnabled" value="true"/>
+        <!--
+        配置默认的执行器。
+         SIMPLE 就是普通的执行器
+         REUSE 执行器会重用预处理语句（PreparedStatement）
+         BATCH 执行器不仅重用语句还会执行批量更新
+         -->
+        <setting name="defaultExecutorType" value="SIMPLE"/>
+
+    </settings>
+    <typeAliases>
+        <package name="com.mysticaldream.domain"/>
+    </typeAliases>
+</configuration>

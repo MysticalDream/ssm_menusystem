@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mysticaldream.mapper.ScoreUserAndMenuMapper">
+    <resultMap id="BaseResultMap" type="com.mysticaldream.domain.ScoreUserAndMenu">
+        <!--@mbg.generated-->
+        <!--@Table score_user_and_menu-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="uid" jdbcType="BIGINT" property="uid"/>
+        <result column="menu_id" jdbcType="BIGINT" property="menuId"/>
+        <result column="score" jdbcType="DECIMAL" property="score"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, `uid`, menu_id, score, create_time, update_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from score_user_and_menu
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        <!--@mbg.generated-->
+        delete
+        from score_user_and_menu
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.mysticaldream.domain.ScoreUserAndMenu"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into score_user_and_menu (`uid`, menu_id, score,
+                                         create_time, update_time)
+        values (#{uid,jdbcType=BIGINT}, #{menuId,jdbcType=BIGINT}, #{score,jdbcType=DECIMAL},
+                #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.mysticaldream.domain.ScoreUserAndMenu" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into score_user_and_menu
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="uid != null">
+                `uid`,
+            </if>
+            <if test="menuId != null">
+                menu_id,
+            </if>
+            <if test="score != null">
+                score,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="uid != null">
+                #{uid,jdbcType=BIGINT},
+            </if>
+            <if test="menuId != null">
+                #{menuId,jdbcType=BIGINT},
+            </if>
+            <if test="score != null">
+                #{score,jdbcType=DECIMAL},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.mysticaldream.domain.ScoreUserAndMenu">
+        <!--@mbg.generated-->
+        update score_user_and_menu
+        <set>
+            <if test="uid != null">
+                `uid` = #{uid,jdbcType=BIGINT},
+            </if>
+            <if test="menuId != null">
+                menu_id = #{menuId,jdbcType=BIGINT},
+            </if>
+            <if test="score != null">
+                score = #{score,jdbcType=DECIMAL},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.mysticaldream.domain.ScoreUserAndMenu">
+        <!--@mbg.generated-->
+        update score_user_and_menu
+        set `uid`       = #{uid,jdbcType=BIGINT},
+            menu_id     = #{menuId,jdbcType=BIGINT},
+            score       = #{score,jdbcType=DECIMAL},
+            create_time = #{createTime,jdbcType=TIMESTAMP},
+            update_time = #{updateTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="vertifyExist" resultType="java.lang.Long">
+        select id
+        from score_user_and_menu
+        where uid = #{uid,jdbcType=BIGINT}
+          and menu_id = #{menuId,jdbcType=BIGINT}
+        limit 1
+    </select>
+</mapper>

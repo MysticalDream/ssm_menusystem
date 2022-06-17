@@ -1,0 +1,14 @@
+#分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+
+#配置服务器和静态资源路径
+ssmServer:
+  port: 8080
+  imgLocation: C:/menu_system_resources
+#配置日志打印根路径
+log4j:
+  basePath: D:/mylogs
+
