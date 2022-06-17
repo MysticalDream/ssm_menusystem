@@ -1,5 +1,6 @@
 package com.mysticaldream.infrastructure.config;
 
+import com.mysticaldream.common.constant.ProjectVariables;
 import com.mysticaldream.common.jackson.serializer.CustomLongSerializer;
 import com.mysticaldream.infrastructure.web.interceptor.LoginHandlerInterceptor;
 import org.springframework.beans.BeansException;
@@ -27,7 +28,6 @@ import java.util.List;
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.mysticaldream.web.controller")
-
 public class WebMvcConfig implements WebMvcConfigurer, ApplicationContextAware {
 
     private ApplicationContext applicationContext;
@@ -40,7 +40,7 @@ public class WebMvcConfig implements WebMvcConfigurer, ApplicationContextAware {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/menusystem/resources/**").addResourceLocations("/WEB-INF/static/");
-        registry.addResourceHandler("/resources/**").addResourceLocations("file:C:/menu_system_resources/");
+        registry.addResourceHandler("/resources/**").addResourceLocations("file:"+ ProjectVariables.ROOT+"/");
     }
 
     /**
