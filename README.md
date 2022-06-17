@@ -17,7 +17,7 @@ jdbc.username=xxxx
 jdbc.password=xxxx
 ```
 - 修改项目的配置文件`src/main/resources/application.yml`
-```xml
+```yaml
 #配置服务器和静态资源路径
 ssmServer:
   #配置服务器的端口
@@ -33,4 +33,17 @@ log4j:
 
 # 运行项目
 配置完成后直接运行`src/main/java/com/mysticaldream/SSMApplication.java`文件
+![SSMApplication.java](screenshot/img.png)
+
+# 运行截图
+![首页](screenshot/img_1.png)
+![首页1](screenshot/img_2.png)
+![登录注册](screenshot/img_3.png)
+![详情](screenshot/img_4.png)
+![评分](screenshot/img_5.png)
+![菜谱管理](screenshot/img_6.png)
+![查看](screenshot/img_7.png)
+![多选](screenshot/img_8.png)
+![上传菜谱](screenshot/img_9.png)
+
 
