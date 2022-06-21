@@ -30,8 +30,14 @@ public class ProjectVariables {
 
     public static String AVATAR_RESOURCE = "/resources/avatar";
 
+    static {
+        System.out.println("inner:"+System.currentTimeMillis());
+        System.out.println(ROOT);
+    }
+
     public static void setROOT(String ROOT) {
         ProjectVariables.ROOT = ROOT;
+        System.out.println(ROOT);
         ProjectVariables.MENU_IMG_PATH = ROOT + "/menu_img";
         ProjectVariables.AVATAR_PATH = ROOT + "/avatar";
     }

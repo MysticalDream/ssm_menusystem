@@ -5,6 +5,7 @@ import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.connector.Connector;
+import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.webresources.DirResourceSet;
 import org.apache.catalina.webresources.StandardRoot;
@@ -25,7 +26,9 @@ public class SSMApplication {
     private static int port = 80;
 
     public static void main(String[] args) throws LifecycleException {
+
         init();
+
         Tomcat tomcat = new Tomcat();
 
         tomcat.setPort(port);
@@ -37,6 +40,15 @@ public class SSMApplication {
         System.out.println("webapp位置:" + new File("src/main/webapp").getAbsolutePath());
 
         Context ctx = tomcat.addWebapp("", new File("src/main/webapp").getAbsolutePath());
+
+        // 使ClassLoader遵循标准双亲委派模型
+        if (ctx instanceof StandardContext) {
+            //原因：初始化ProjectVariables出现问题，由于tomcat默认打破了双亲委派的模型，导致main中加载的和tomcat运行的web应用程序中加载的不是同一个
+            //这个是个不优雅的做法，但是它是工作的
+            //其实可以将初始化的工作放到上下文的监听器中
+
+            ((StandardContext) ctx).setDelegate(true);
+        }
 
 
         WebResourceRoot resources = new StandardRoot(ctx);
@@ -58,4 +70,5 @@ public class SSMApplication {
         port = (Integer) ssmServer.get("port");
         ProjectVariables.setROOT((String) ssmServer.get("imgLocation"));
     }
+
 }

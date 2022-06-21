@@ -16,6 +16,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.*;
 
+import java.lang.reflect.Constructor;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -34,13 +35,13 @@ public class WebMvcConfig implements WebMvcConfigurer, ApplicationContextAware {
 
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-//        configurer.enable();
+        configurer.enable();
     }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/menusystem/resources/**").addResourceLocations("/WEB-INF/static/");
-        registry.addResourceHandler("/resources/**").addResourceLocations("file:"+ ProjectVariables.ROOT+"/");
+        registry.addResourceHandler("/resources/**").addResourceLocations("file:" + ProjectVariables.ROOT + "/");
     }
 
     /**
